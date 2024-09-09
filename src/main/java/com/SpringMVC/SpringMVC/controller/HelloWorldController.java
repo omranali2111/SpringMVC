@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDateTime;
 
@@ -20,13 +21,11 @@ public class HelloWorldController {
         return "hello";
     }
     @RequestMapping("/processformV2")
-    public String letsShout(HttpServletRequest request, Model model){
-        String theName = request.getParameter("studentName");
+    public String letsShout(@RequestParam("studentName") String theName, Model model){
         theName=theName.toUpperCase();
-        String result ="HI!"+ theName;
+        String result ="hey my friend! "+ theName;
          model.addAttribute("message",result);
          return "hello";
-
 
     }
 }
